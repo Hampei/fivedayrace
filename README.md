@@ -20,13 +20,26 @@ So the main flow of the app is:
 - phone apps get notifcations and fetch the new ranking clicks it.
 
 
-TODO: 
+app_usage
+---------
+
+- open a webview to 'fivedayrace.heroku.com/iphone_login
+- Allow it to redirect to fitbit -> user logs in -> redirects to app
+- app redirects to token://<app_token>
+- save token and use it in all request by specifying ?app_token=<app_token>
+- wait for notification to come in #TODO
+- get /stats.json?app_token=<app_token>
+
+
+TODO
+----
+
 - save friends of users. A user should only battle his friends from fitbit.
  - maybe add an option to hide some of the friends from fitbit.
 
 
 Local development
-=================
+-----------------
 
 create config/heroku_env.rb and fill with needed 
     ENV['FITBIT_KEY'] = 'xxx'

@@ -10,7 +10,7 @@ protected
   end
   
   def app_token_login
-    User.find_by_app_token(params[:app_token]) if params[:app_token]
+    User.find_by_app_token!(params[:app_token]) if params[:app_token]
   end
 
   def deny_access
