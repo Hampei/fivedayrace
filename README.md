@@ -36,12 +36,15 @@ TODO
 
 - save friends of users. A user should only battle his friends from fitbit.
  - maybe add an option to hide some of the friends from fitbit.
+- iphone notications
+- android notifications
 
 
 Local development
 -----------------
 
-create config/heroku_env.rb and fill with needed 
+create config/heroku_env.rb and fill with needed
+
     ENV['FITBIT_KEY'] = 'xxx'
     ENV['FITBIT_SECRET'] = 'xxx'
     ENV['SECRET_TOKEN'] = 'xxx' # for cookies Application.config.secret_token
