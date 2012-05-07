@@ -44,4 +44,14 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  # we only do add follows here, since people might delete relationships to remove them from their list.
+  # used in cases where two people already using this app have just become friends on fitbit.
+  def update_friends
+    client.friends['friends'].each do |f|
+      if friend = User.find_by_fitbit_uid(f['user']['encodedId']) and !u.follows.include? friend
+        follows << friend
+      end
+    end
+  end
 end

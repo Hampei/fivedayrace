@@ -42,6 +42,11 @@ class FitbitCallbackHandler < Sinatra::Base
     ''
   end
 
+  post('/update_friends') do
+    user = User.find_by_app_token params[:app_token]
+    user.update_friends
+  end
+
   get('/test_sinatra') { 'hello' }
 
   # to update to use EM::Iterator as soon as heroku has EM ->v1
