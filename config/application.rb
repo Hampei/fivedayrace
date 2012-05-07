@@ -16,7 +16,7 @@ module Hundredourrace
     puts config.autoload_paths
     # config.middleware.insert 0, 'RedirectFromWww'
     # require File.expand_path(__FILE__, '../lib/fitbit_callback_handler')
-    config.middleware.insert_after ActionDispatch::Static, 'FitbitCallbackHandler'
+    # config.middleware.insert_after ActionDispatch::Static, 'FitbitCallbackHandler'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

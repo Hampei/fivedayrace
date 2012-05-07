@@ -1,16 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.3'
 gem 'thin'
-gem 'sinatra'
+gem 'sinatra' #, git: 'https://github.com/sinatra/sinatra.git'
 
-# last commit before it started using EventMachine v1
-# heroku doesn't support EMv1 yet.
+# gem 'redis'
+
 gem "simple_oauth", "~> 0.1.7"
 gem 'em-http-request', git: 'https://github.com/hampei/em-http-request.git', branch: 'em0.12.10'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'fitgem', :git => 'https://github.com/whazzmaster/fitgem.git'
 gem 'omniauth-fitgem', :git => 'https://github.com/hampei/omniauth-fitgem.git', :branch => 'fix-gemspec'
@@ -18,8 +15,8 @@ gem 'omniauth-fitgem', :git => 'https://github.com/hampei/omniauth-fitgem.git', 
 gem 'apn_on_rails'
 
 gem 'haml-rails'
-gem 'redis'
-gem 'less-rails'
+# gem 'less-rails'
+gem 'jquery-rails'
 
 group :development do
   gem 'sqlite3'
@@ -38,16 +35,14 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  # gem 'sass-rails',   '~> 3.2.3'
+  # gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'
+  # gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,0 +1,24 @@
+- @max_steps = @stats.max{|o| o['steps']}.steps
+:css
+  body {}
+  .wrap {
+    position: relative;
+    width: 100%;
+  }
+  .line {
+    position: relative;
+    background-image: url('/assets/foot_prints.png');
+    height: 100px;
+    float: left;
+  }
+  img {
+    position:relative;
+    width:  100px;
+    height: 100px;
+    float: left;
+  }
+- @stats.each do |u|
+  .wrap
+    .line{style: "width: #{u.steps * 80 / @max_steps}%" }
+    %img{src: u.avatar, alt: u.name, title: u.name}
+  

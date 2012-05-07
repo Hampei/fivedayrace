@@ -1,17 +1,17 @@
 class HomeController < ApplicationController
   skip_filter :require_user, :only => :login
   respond_to :html, :json
-  
+
   def index
     
   end
-  
+
   def login
   end
 
   def stats
-    respond_with(User.select('users.id, name, avatar, sum(steps) as steps').joins(:activity_days).where('date >= ?', 4.days.ago.to_date).group(:user_id))
-    
+    respond_with @stats = current_user.follows.add_steps.select('users.id, name, avatar').concat(
+      User.where(id: current_user.id).add_steps.select('users.id, name, avatar')).
+      sort_by{|o| o.steps}
   end
-
 end

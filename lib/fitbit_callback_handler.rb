@@ -25,7 +25,7 @@ class FitbitCallbackHandler < Sinatra::Base
 #   :floors=>11, :lightlyActiveMinutes=>115, :marginalCalories=>294, :sedentaryMinutes=>1287, 
 #   :steps=>1535, :veryActiveMinutes=>0}}
 
-  post('/fitbit/callback') do
+  post('/callback') do
     fb_events = JSON.parse request.body.string, symbolize_names: true
     puts "fitbit notification: #{fb_events}"
     EM.next_tick do
@@ -41,6 +41,8 @@ class FitbitCallbackHandler < Sinatra::Base
     status 204
     ''
   end
+
+  get('/test_sinatra') { 'hello' }
 
   # to update to use EM::Iterator as soon as heroku has EM ->v1
   # def update_counts_and_notify_of_changes(fb_events)

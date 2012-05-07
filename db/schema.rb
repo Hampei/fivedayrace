@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502212152) do
+ActiveRecord::Schema.define(:version => 20120505155135) do
 
   create_table "activity_days", :force => true do |t|
     t.integer  "user_id"
@@ -93,6 +93,14 @@ ActiveRecord::Schema.define(:version => 20120502212152) do
     t.datetime "updated_at",          :null => false
     t.boolean  "launch_notification"
   end
+
+  create_table "following_users", :force => true do |t|
+    t.integer "user_id",      :null => false
+    t.integer "following_id", :null => false
+  end
+
+  add_index "following_users", ["following_id"], :name => "index_following_users_on_following_id"
+  add_index "following_users", ["user_id"], :name => "index_following_users_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

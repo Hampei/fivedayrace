@@ -39,7 +39,5 @@ private
     User.create!(name: auth.info.user.displayName, avatar: auth.info.user.avatar,
       fitbit_uid: auth.uid,
       fitbit_token: auth.credentials.token, fitbit_secret: auth.credentials.secret)
-    
   end
-
 end
