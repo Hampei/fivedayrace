@@ -12,6 +12,6 @@ class HomeController < ApplicationController
   def stats
     respond_with @stats = current_user.follows.add_steps.select('users.id, name, avatar').concat(
       User.where(id: current_user.id).add_steps.select('users.id, name, avatar')).
-      sort_by{|o| o.steps}
+      sort_by{|o| 0-o.steps}
   end
 end
