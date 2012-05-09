@@ -26,7 +26,8 @@ class FitbitCallbackHandler < Sinatra::Base
 #   :steps=>1535, :veryActiveMinutes=>0}}
 
   post('/callback') do
-    fb_events = JSON.parse request.body.string, symbolize_names: true
+    updates = request.body.string.match(/(\[\{.*\}\])/)[0] #params['updates'][:tempfile].read
+    fb_events = JSON.parse updates, symbolize_names: true
     puts "fitbit notification: #{fb_events}"
     EM.next_tick do
       update_counts_and_notify_of_changes(fb_events)
