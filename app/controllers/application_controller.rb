@@ -6,11 +6,7 @@ class ApplicationController < ActionController::Base
 protected
 
   def require_user
-    current_user.present? || app_token_login || deny_access
-  end
-  
-  def app_token_login
-    User.find_by_app_token!(params[:app_token]) if params[:app_token]
+    current_user.present? || deny_access
   end
 
   def deny_access
@@ -21,6 +17,10 @@ protected
 private
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= if session[:user_id]
+      User.find(session[:user_id])
+    elsif params[:app_token]
+      User.find_by_app_token!(params[:app_token])
+    end
   end
 end
